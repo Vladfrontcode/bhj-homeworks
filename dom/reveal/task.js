@@ -1,5 +1,4 @@
 const message = document.querySelectorAll('.reveal');
-console.log(message);
 
 function isVisible (el) {
     const {top, bottom} = el.getBoundingClientRect()
