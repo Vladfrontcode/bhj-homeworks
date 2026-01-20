@@ -1,26 +1,13 @@
-const tabs = document.getElementsByClassName('tab');
-const tabContent = document.getElementsByClassName('tab__content');
-
-for (let i = 0; i < 2; i++) {
-    tabs[i].addEventListener('click', function() {
-        tabs[0].classList.remove('tab_active');
-        tabs[1].classList.remove('tab_active');
-        tabs[2].classList.remove('tab_active');
-        this.classList.add('tab_active');
-        tabContent[0].classList.remove('tab__content_active');
-        tabContent[1].classList.remove('tab__content_active');
-        tabContent[2].classList.remove('tab__content_active');
-        tabContent[i].classList.add('tab__content_active');
+document.querySelectorAll('.tabs').forEach(container => {
+    const tabs = container.querySelectorAll('.tab');
+    const tabContent = container.querySelectorAll('.tab__content');
+    
+    tabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => {
+            tabs.forEach(header => header.classList.remove('tab_active'));
+            tabContent.forEach(text => text.classList.remove('tab__content_active'));            
+            tab.classList.add('tab_active');
+            tabContent[index].classList.add('tab__content_active');
+        });
     });
-};
-
-function onClick() {
-    tabs[0].classList.remove('tab_active');
-    tabs[1].classList.remove('tab_active');
-    this.classList.add('tab_active');
-    tabContent[0].classList.remove('tab__content_active');
-    tabContent[1].classList.remove('tab__content_active');
-    tabContent[2].classList.add('tab__content_active');
-};
-
-tabs[2].onclick = onClick
+})
